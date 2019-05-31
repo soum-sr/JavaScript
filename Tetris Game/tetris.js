@@ -15,12 +15,12 @@ function arenaSweep(){
 		const row = arena.splice(y,1)[0].fill(0);
 		arena.unshift(row);
 		++y;
-
 		player.score += rowCount * 10;
 		rowCount *= 2;
 
 	}
 }
+
 
 /* 'T' like shape 
  We have 3 rows so that we can have the center of rotation */
@@ -119,6 +119,10 @@ function drawMatrix(matrix, offset){
 		row.forEach((value, x) => {
 			if (value !== 0){
 				context.fillStyle = colors[value];
+				document.getElementById("header").style.color = colors[value];
+				document.getElementById("tetris").style.border = "thick solid #fff"
+				document.getElementById("tetris").style.borderColor = colors[value];
+				document.getElementById("body").style.background = "linear-gradient(to top,"+String(colors[value]) +", black)";
 				context.fillRect(x + offset.x,y + offset.y ,1,1);
 			}
 		});
@@ -226,6 +230,7 @@ function update(time = 0){
 
 function updateScore(){
 	document.getElementById('score').innerText = player.score;
+	document.getElementById('score').style.fontSize = "30px";
 }
 
 const colors = [
@@ -234,8 +239,8 @@ const colors = [
 	'#FF7F00',
 	'#FFFF00', 
 	'#00FF00',
-	'#0000FF',
-	'#4B0082',
+	'#007fff',
+	'#02ffdd',
 	'#9400D3',
 ]
 
